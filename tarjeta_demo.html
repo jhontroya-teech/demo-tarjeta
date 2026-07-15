@@ -105,7 +105,7 @@ async function cargarTarjeta() {
     return;
   }
   try {
-    const resp = await fetch(SCRIPT_URL + '?action=tarjeta&id=' + encodeURIComponent(clienteId));
+    const resp = await fetch(SCRIPT_URL + '?action=tarjeta&id=' + encodeURIComponent(clienteId) + '&_=' + Date.now(), { cache: 'no-store' });
     const data = await resp.json();
     if (!data.success) {
       app.innerHTML = '<div class="estado">No se encontró tu tarjeta. Contacta al programador: 0987738569.</div>';
